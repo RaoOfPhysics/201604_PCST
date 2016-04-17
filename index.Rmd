@@ -1,0 +1,76 @@
+---
+title: "Attitudes towards outreach in particle physics"
+author: "Achintya Rao"
+date: "26 April 2016"
+output:
+    revealjs::revealjs_presentation:
+        theme: serif
+        highlight: pygments
+        incremental: true
+        center: true
+        transition: slide
+        reveal_options:
+            slideNumber: true
+        fig_caption: true
+        showNotes: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+dat <- read.csv(file = "../quant_analysis/final_dataset.csv", header = TRUE)
+library(dplyr)
+library(plotly)
+likert_units <- seq(0.0000, 5.0000, by=1)
+```
+
+---
+
+## A bit about me
+
+> - **Science Communicator** (2010 &mdash; present)<br />Compact Muon Solenoid (CMS) Collaboration at CERN
+> - **Doctoral Student** (2014 &mdash; present)<br />UWE Science Communication Unit, Bristol
+
+> - **MA in Science Journalism** (2009 &mdash; 2010)<br />City University, London
+> - **BSc in Physics** (2005 &mdash; 2008)<br />St. Xavier’s College, Mumbai (Bombay)
+
+<br />
+<br />
+<br />
+<small>Twitter: [\@RaoOfPhysics](https://twitter.com/RaoOfPhysics) | GitHub: [\@RaoOfPhysics](https://github.com/RaoOfPhysics)</small>
+
+---
+
+<section data-background="https://cds.cern.ch/record/1363014/files/IMG_9286.JPG?subformat=icon-1440">
+
+##
+
+The [CMS Collaboration](http://cms.web.cern.ch) at CERN, one of the two teams that discovered the Higgs boson in 2012
+
+- Particle physicists
+- Engineers
+- Students
+</section>
+
+---
+
+<section><h1>Everything beyond this point is junk!</h1>
+
+## Summary of cars?
+```{r cars}
+summary(cars)
+```
+</section>
+
+---
+
+##
+
+```{r echo=FALSE}
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+p <- ggplot(data = d, aes(x = carat, y = price)) +
+  geom_point(aes(text = paste("Clarity:", clarity)), size = 1) +
+  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
+
+(gg <- ggplotly(p))
+```
