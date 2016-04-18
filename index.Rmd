@@ -16,10 +16,11 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 dat <- read.csv(file = "../quant_analysis/final_dataset.csv", header = TRUE)
 library(dplyr)
 library(plotly)
+library(gridExtra)
 likert_units <- seq(0.0000, 5.0000, by=1)
 ```
 
@@ -29,11 +30,9 @@ likert_units <- seq(0.0000, 5.0000, by=1)
 
 > - **Science Communicator** (2010 &mdash; present)<br />Compact Muon Solenoid (CMS) Collaboration at CERN
 > - **Doctoral Student** (2014 &mdash; present)<br />UWE Science Communication Unit, Bristol
+>     - **MA in Science Journalism** (2009 &mdash; 2010)<br />City University, London
+>     - **BSc in Physics** (2005 &mdash; 2008)<br />St. Xavier’s College, Mumbai (Bombay)
 
-> - **MA in Science Journalism** (2009 &mdash; 2010)<br />City University, London
-> - **BSc in Physics** (2005 &mdash; 2008)<br />St. Xavier’s College, Mumbai (Bombay)
-
-<br />
 <br />
 <br />
 <small>Twitter: [\@RaoOfPhysics](https://twitter.com/RaoOfPhysics) | GitHub: [\@RaoOfPhysics](https://github.com/RaoOfPhysics)</small>
@@ -44,33 +43,163 @@ likert_units <- seq(0.0000, 5.0000, by=1)
 
 ##
 
-The [CMS Collaboration](http://cms.web.cern.ch) at CERN, one of the two teams that discovered the Higgs boson in 2012
-
-- Particle physicists
-- Engineers
-- Students
-</section>
-
----
-
-<section><h1>Everything beyond this point is junk!</h1>
-
-## Summary of cars?
-```{r cars}
-summary(cars)
-```
-</section>
-
----
+- [CERN](http://home.cern), the European Laboratory for Particle Physics
+    - Geneva, Switzerland
+    - host laboratory for international collaborations
+    - ~half of all 20,000 particle physicists
 
 ##
 
-```{r echo=FALSE}
-set.seed(100)
-d <- diamonds[sample(nrow(diamonds), 1000), ]
-p <- ggplot(data = d, aes(x = carat, y = price)) +
-  geom_point(aes(text = paste("Clarity:", clarity)), size = 1) +
-  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
+- The [Compact Muon Solenoid (CMS) Collaboration](http://cms.web.cern.ch)
+    - one of the two teams that [discovered the Higgs boson in 2012](http://cms.web.cern.ch/news/observation-new-particle-mass-125-gev)
+    - breakdown of collaborators as of June 2015
+        - over 4000 physicists, engineers, students  (not including technicians and admin)
+        - 183 institutes, universities, laboratories from 42 countries
+        - 80+ nationalities
 
-(gg <- ggplotly(p))
+</section>
+
+---
+
+<section><h1>Data collection for quantitative analysis</h1>
+
+## Electronic survey distributed by e-mail
+
+- Sent to the whole collaboration via mailing list
+- Three reminders sent to whole list
+- Engineers reminded separately as well
+- Representatives from low-response countries reminded separately
+
+## Responses
+
+- Over 400, but a few duplicates
+- Final count: **391** valid responses
+- ~10% of the collaboration
+
+## CMS member countries
+
+```{r}
+ggplot(dat, aes(x = inst_country), y = count) +
+    geom_bar()
 ```
+
+## Gender
+
+```{r}
+ggplot(dat, aes(x = gender), y = count) +
+    geom_bar()
+```
+
+## Age
+
+```{r}
+dat.reduced <- filter(dat, age >= "25", age < "85")
+
+# Code below by Rik Smith-Unna (@Blahah on GitHub)
+
+# create a vector of breaks, starting at N, then one less than each multiple
+# of 10 up to the next highest multiple of ten after the maximum value
+# in the data
+breaks <- c(25, # start at 25, here. the c() funcion creates a vector,
+            # and flattens any vectors passed in.
+            # e.g try c(c(1,2,3), c(4,5,6))
+            # the second argument to c() here is a sequence
+            # it starts at 35
+            seq(35, 
+              # and ends at the maximum value rounded up to the nearest multiple
+              # of ten. We get that multiple by using a feature of the
+              # round() function. The first argument to round() is the
+              # number to be rounded. The second is the number of digits
+              # to round it to - unless the number is negative, in which
+              # case it is treated as a (positive) power of ten to which
+              # the number will be rounded
+                round(max(dat.reduced$age + 5), -1),
+              # the sequence should have step sizes of ten
+                by = 10)
+            # we take the sequence from 10..rounded(max) and take 1 away from
+            # it. This is a vector operation - it takes 1 from every value.
+            # this lets us go from 10, 20, 30... to 9, 19, 29...
+            - 1)
+
+ggplot(dat.reduced, aes(x = age)) +
+  geom_histogram(breaks = breaks) +
+  stat_bin(breaks = breaks,
+           aes(y=..count.., label=..count..),
+           geom="text",
+           vjust=-0.5)
+```
+
+</section>
+
+---
+
+<section><h1>Attitudes</h1>
+
+## Colleagues:
+
+```{r}
+# Importance
+
+bar_labels <- barplot(table(dat$imp_colleagues), ylim = c(0, max(table(dat$imp_colleagues)+30)), main = "Colleagues: Importance", xlab = paste("Mean ± stddev:", format(round(mean(dat$imp_colleagues), 2), nsmall = 2), "±", format(round(sd(dat$imp_colleagues), 2), nsmall = 2), sep=" "))
+text(bar_labels, table(dat$imp_colleagues) + 20, labels=(table(dat$imp_colleagues)))
+```
+
+##
+
+```{r}
+# Ease
+
+bar_labels <- barplot(table(dat$easy_colleagues), ylim = c(0, max(table(dat$easy_colleagues)+30)), main = "Colleagues: Ease", xlab = paste("Mean ± stddev:", format(round(mean(dat$easy_colleagues), 2), nsmall = 2), "±", format(round(sd(dat$easy_colleagues), 2), nsmall = 2), sep=" "))
+text(bar_labels, table(dat$easy_colleagues) + 20, labels=(table(dat$easy_colleagues)))
+```
+
+##
+
+```{r}
+# Knowledge
+
+bar_labels <- barplot(table(dat$knol_colleagues), ylim = c(0, max(table(dat$knol_colleagues)+30)), main = "Colleagues: Knowledge", xlab = paste("Mean ± stddev:", format(round(mean(dat$knol_colleagues), 2), nsmall = 2), "±", format(round(sd(dat$knol_colleagues), 2), nsmall = 2), sep=" "))
+text(bar_labels, table(dat$knol_colleagues) + 20, labels=(table(dat$knol_colleagues)))
+```
+
+</section>
+
+---
+
+<section><h1>Everything beyond this point is WIP!</h1>
+
+## Age distributions
+```{r, echo=FALSE}
+age_breaks_ten <- seq(25, 85, by=10)
+agegroups_count <- table(cut(dat$age, age_breaks_ten, right = F))
+
+print(age_breaks_ten)
+print(agegroups_count)
+
+bar_labels <- barplot(agegroups_count, ylim = c(0, max(agegroups_count+30)), main = "Age distribution by decade", names.arg=c("25-34", "35-44", "45-54", "55-64", "65-74", "75-84"))
+text(bar_labels, agegroups_count + 10, labels=agegroups_count)
+```
+
+##
+
+```{r, echo=FALSE}
+dat.25 <- filter(dat, age >= "25", age < "35")
+dat.35 <- filter(dat, age >= "35", age < "45")
+dat.45 <- filter(dat, age >= "45", age < "55")
+dat.55 <- filter(dat, age >= "55", age < "65")
+dat.65 <- filter(dat, age >= "65", age < "75")
+dat.75 <- filter(dat, age >= "75", age < "85")
+```
+
+##
+
+```{r, echo=FALSE}
+ggplot(dat, aes(x = age)) + geom_histogram(binwidth=1)
+```
+
+##
+
+```{r, echo=FALSE}
+ggplot(dat, aes(x = age)) + geom_histogram(binwidth=5)
+```
+</section>
