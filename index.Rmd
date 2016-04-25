@@ -31,7 +31,27 @@ likert_units <- seq(0.0000, 5.0000, by=1)
 
 ---
 
-## A bit about me
+<section><h1>Conclusions</h1>
+
+## Outreach activities
+
+- Most respondents to survey have participated in outreach in the past
+    - F/M ratio ~same
+- Most said they will participate in the coming 12 months
+
+## Attitudes to specific groups
+
+- Colleagues &mdash; most important, most knowledgeable, easiest to communicate with
+- Science journalists, school students, non-specialist public on par for importance and for ease of communication
+- Science journalists more knowledgeable than students and public
+
+</section>
+
+---
+
+<section><h1>A bit about me</h1>
+
+##
 
 > - **Science Communicator** (2010 &mdash; present)<br />Compact Muon Solenoid 
 (CMS) Collaboration at CERN
@@ -44,28 +64,33 @@ Mumbai (Bombay)
 
 <br />
 <br />
-<small>Twitter: [\@RaoOfPhysics](https://twitter.com/RaoOfPhysics) | 
-GitHub: [\@RaoOfPhysics](https://github.com/RaoOfPhysics)</small>
+<small>
+Twitter: [\@RaoOfPhysics](https://twitter.com/RaoOfPhysics) | 
+GitHub: [\@RaoOfPhysics](https://github.com/RaoOfPhysics)<br />
+This presentation: [github.com/RaoOfPhysics/201604_PCST](https://github.com/RaoOfPhysics/201604_PCST)
+</small>
+
+</section>
+
+---
+
+<section><h1>Public engagement</h1>
+
+##
+
+- Conversation dominated with research fields that have:
+    - direct impact
+    - immediate impact
+
+- What about fundamental research?
+
+</section>
 
 ---
 
 <section><h1>My PhD project</h1>
 
-## Research questions
-
-- What are the attitudes towards outreach within the particle-physics 
-community and what are the motivations for and barriers against participating?
-- Do these vary w.r.t.
-age, gender  and academic position?
-
-## Research questions (contd.)
-
-- How are these influenced 
-by (a) funding bodies, (b) national expectations towards outreach 
-and (c) the  multicultural nature of international collaborations?
-- How does the community perceive the usefulness and impact of outreach?
-
-## Defining "outreach"
+## "Engagement" &rarr; "Outreach"
 
 - used to refer to all science-communication activities 
 “designed for an audience outside academia” (Crettaz&nbsp;von&nbsp;Roten, 2011, p.54)
@@ -81,6 +106,21 @@ activities that bring scientific research to audiences outside
 the research community. It is also known as “popularisation”.
 
 &mdash; note included in survey
+
+## Research questions
+
+- What are the attitudes towards outreach within the particle-physics 
+community and what are the motivations for and barriers against participating
+- Do these vary w.r.t.
+age, gender and academic position
+
+## Research questions (…)
+
+- How are these influenced by 
+    - funding bodies
+    - national expectations towards outreach 
+    - the  multicultural nature of international collaborations
+- How does the community perceive the usefulness and impact of outreach
 
 </section>
 
@@ -112,12 +152,12 @@ The European Laboratory for Particle Physics
 
 ##
 
-### The [CMS Collaboration](http://cms.web.cern.ch)
+### The CMS Collaboration
 
-**C**ompact **M**uon **S**olenoid
+[**C**ompact **M**uon **S**olenoid](http://cms.web.cern.ch)
 
 - one of the two teams that [discovered the Higgs boson in 2012](http://cms.web.cern.ch/news/observation-new-particle-mass-125-gev)
-- breakdown of collaborators as of June 2015
+- people (June 2015)
     - over 4000 physicists, engineers, students  (not including technicians 
         and admin)
     - 183 institutes, universities, laboratories from 42 countries
@@ -188,7 +228,9 @@ ggplotly()
 
 ```{r}
 ggplot(dat, aes(x = gender)) +
-    geom_bar(width=0.8)
+    geom_bar(width=0.8) +
+    geom_text(stat="count", aes(label = ..count..,
+                                y=..count..), vjust=-0.5)
 ```
 
 ## Age
@@ -235,7 +277,95 @@ ggplot(dat.reduced, aes(x = age)) +
 
 ---
 
+<section><h1>Participation in outreach</h1>
+
+## Previous participation
+
+```{r}
+ggplot(dat, aes(x = previous_participation)) +
+    geom_bar(width=0.8) +
+    geom_text(stat="count", aes(label = ..count..,
+                                y=..count..), vjust=-0.5) + 
+    facet_wrap(~gender)
+
+```
+
+## Last 12 months
+
+Total no. of activities &rarr; Time spent on outreach
+
+<svg xmlns="http://www.w3.org/2000/svg" height="520" width="750"><g transform="translate(0,10)"><g><path style="stroke-width: 139.655; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,69.82758620689653C375,69.82758620689653 375,69.82758620689653 745,69.82758620689653" class="link"></path><path style="stroke-width: 99.569; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,189.43965517241378C375,189.43965517241378 375,211.07758620689654 745,211.07758620689654" class="link"></path><path style="stroke-width: 38.7931; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,258.6206896551724C375,258.6206896551724 375,323.87931034482756 745,323.87931034482756" class="link"></path><path style="stroke-width: 31.0345; fill: none; stroke: rgb(105, 191, 105); stroke-opacity: 0.4;" d="M5,344.9137931034483C375,344.9137931034483 375,358.7931034482759 745,358.7931034482759" class="link"></path><path style="stroke-width: 24.569; fill: none; stroke: rgb(105, 191, 105); stroke-opacity: 0.4;" d="M5,317.11206896551727C375,317.11206896551727 375,273.1465517241379 745,273.1465517241379" class="link"></path><path style="stroke-width: 24.569; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,403.40517241379314C375,403.40517241379314 375,386.5948275862069 745,386.5948275862069" class="link"></path><path style="stroke-width: 20.6897; fill: none; stroke: rgb(191, 105, 105); stroke-opacity: 0.4;" d="M5,459.3103448275862C375,459.3103448275862 375,471.89655172413796 745,471.89655172413796" class="link"></path><path style="stroke-width: 19.3966; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,425.3879310344828C375,425.3879310344828 375,435.38793103448273 745,435.38793103448273" class="link"></path><path style="stroke-width: 9.05172; fill: none; stroke: rgb(105, 191, 105); stroke-opacity: 0.4;" d="M5,364.9568965517242C375,364.9568965517242 375,421.16379310344826 745,421.16379310344826" class="link"></path><path style="stroke-width: 9.05172; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,386.5948275862069C375,386.5948275862069 375,289.9568965517241 745,289.9568965517241" class="link"></path><path style="stroke-width: 6.46552; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,281.25C375,281.25 375,413.4051724137931 745,413.4051724137931" class="link"></path><path style="stroke-width: 5.17241; fill: none; stroke: rgb(105, 191, 105); stroke-opacity: 0.4;" d="M5,302.2413793103449C375,302.2413793103449 375,142.2413793103448 745,142.2413793103448" class="link"></path><path style="stroke-width: 3.87931; fill: none; stroke: rgb(191, 105, 105); stroke-opacity: 0.4;" d="M5,447.0258620689655C375,447.0258620689655 375,146.76724137931032 745,146.76724137931032" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,288.36206896551727C375,288.36206896551727 375,493.5344827586207 745,493.5344827586207" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(191, 191, 105); stroke-opacity: 0.4;" d="M5,285.7758620689655C375,285.7758620689655 375,460.2586206896552 745,460.2586206896552" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(105, 191, 105); stroke-opacity: 0.4;" d="M5,370.7758620689656C375,370.7758620689656 375,496.12068965517244 745,496.12068965517244" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(105, 105, 191); stroke-opacity: 0.4;" d="M5,486.12068965517244C375,486.12068965517244 375,498.7068965517241 745,498.7068965517241" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(105, 105, 191); stroke-opacity: 0.4;" d="M5,480.948275862069C375,480.948275862069 375,150 745,150" class="link"></path><path style="stroke-width: 2.58621; fill: none; stroke: rgb(191, 105, 191); stroke-opacity: 0.4;" d="M5,498.7068965517242C375,498.7068965517242 375,447.67241379310343 745,447.67241379310343" class="link"></path><path style="stroke-width: 1.2931; fill: none; stroke: rgb(105, 105, 191); stroke-opacity: 0.4;" d="M5,482.8879310344828C375,482.8879310344828 375,399.52586206896547 745,399.52586206896547" class="link"></path><path style="stroke-width: 1.2931; fill: none; stroke: rgb(105, 105, 191); stroke-opacity: 0.4;" d="M5,484.1810344827586C375,484.1810344827586 375,445.7327586206896 745,445.7327586206896" class="link"></path></g><g><g transform="translate(0,497.4137931034483)" class="node"><rect style="" width="5" height="2.586206896551724"><title>&gt;100
+2</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="1.293103448275862" x="11">&gt;100</text></g><g transform="translate(0,445.08620689655174)" class="node"><rect style="" width="5" height="24.56896551724138"><title>0
+19</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="12.28448275862069" x="11">0</text></g><g transform="translate(0,-2.842170943040401e-14)" class="node"><rect style="" width="5" height="289.65517241379314"><title>01–05
+224</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="144.82758620689657" x="11">01–05</text></g><g transform="translate(0,299.65517241379314)" class="node"><rect style="" width="5" height="72.41379310344828"><title>06–10
+56</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="36.20689655172414" x="11">06–10</text></g><g transform="translate(0,382.0689655172414)" class="node"><rect style="" width="5" height="53.01724137931035"><title>11–50
+41</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="26.508620689655174" x="11">11–50</text></g><g transform="translate(0,479.65517241379314)" class="node"><rect style="" width="5" height="7.758620689655173"><title>51–100
+6</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="3.8793103448275863" x="11">51–100</text></g><g transform="translate(745,492.2413793103448)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="7.758620689655173"><title>More than 8 hours per week, on average
+6</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="3.8793103448275863" x="-6">More than 8 hours per week, on average</text></g><g transform="translate(745,458.9655172413793)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="23.275862068965516"><title>None
+18</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="11.637931034482758" x="-6">None</text></g><g transform="translate(745,304.48275862068965)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="95.6896551724138"><title>Up to 1 hour per week, on average
+74</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="47.8448275862069" x="-6">Up to 1 hour per week, on average</text></g><g transform="translate(745,-2.842170943040401e-14)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="151.29310344827587"><title>Up to 10 hours in total
+117</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="75.64655172413794" x="-6">Up to 10 hours in total</text></g><g transform="translate(745,161.29310344827584)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="133.1896551724138"><title>Up to 2 hours per month, on average
+103</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="66.5948275862069" x="-6">Up to 2 hours per month, on average</text></g><g transform="translate(745,410.17241379310343)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="38.793103448275865"><title>Up to 8 hours per week, on average
+30</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="19.396551724137932" x="-6">Up to 8 hours per week, on average</text></g></g></g></svg>
+
+## Next 12 months?
+
+Past &rarr; Future
+
+<svg xmlns="http://www.w3.org/2000/svg" height="520" width="750"><g transform="translate(0,10)"><g><path style="stroke-width: 298.312; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,154.15601023017902C375,154.15601023017902 375,149.15601023017902 745,149.15601023017902" class="link"></path><path style="stroke-width: 117.852; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,362.23785166240407C375,362.23785166240407 375,374.60358056265983 745,374.60358056265983" class="link"></path><path style="stroke-width: 25.7801; fill: none; stroke: rgb(191, 105, 105); stroke-opacity: 0.4;" d="M5,462.4680306905371C375,462.4680306905371 375,446.4194373401534 745,446.4194373401534" class="link"></path><path style="stroke-width: 19.6419; fill: none; stroke: rgb(191, 105, 105); stroke-opacity: 0.4;" d="M5,485.17902813299236C375,485.17902813299236 375,490.1790281329923 745,490.1790281329923" class="link"></path><path style="stroke-width: 11.0486; fill: none; stroke: rgb(105, 191, 191); stroke-opacity: 0.4;" d="M5,426.68797953964196C375,426.68797953964196 375,474.8337595907928 745,474.8337595907928" class="link"></path><path style="stroke-width: 7.36573; fill: none; stroke: rgb(191, 105, 105); stroke-opacity: 0.4;" d="M5,445.8951406649616C375,445.8951406649616 375,301.9948849104859 745,301.9948849104859" class="link"></path></g><g><g transform="translate(745,315.6777493606138)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="143.63171355498721"><title>Maybe
+117</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="71.81585677749361" x="-6">Maybe</text></g><g transform="translate(745,469.309462915601)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="30.69053708439898"><title>No
+25</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="15.34526854219949" x="-6">No</text></g><g transform="translate(745,0)" class="node"><rect style="fill: rgb(102, 102, 102);" width="5" height="305.6777493606138"><title>Yes
+249</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="end" dy=".35em" y="152.8388746803069" x="-6">Yes</text></g><g transform="translate(0,442.21227621483376)" class="node"><rect style="" width="5" height="52.78772378516624"><title>No
+43</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="26.39386189258312" x="11">No</text></g><g transform="translate(0,5)" class="node"><rect style="" width="5" height="427.21227621483376"><title>Yes
+348</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="213.60613810741688" x="11">Yes</text></g></g></g></svg>
+
+</section>
+
+---
+
 <section><h1>Attitudes towards specific groups</h1>
+
+##
+
+**Importance**
+
+> How important it is for you, personally, to communicate your research with the following groups
+
+1|2|3|4|5
+--:|:--|:--|:--|:--
+Not important at all||||Very important
+
+##
+
+**Knowledge**
+
+> How knowledgeable do you think each group, as a whole, is about your research area
+
+1|2|3|4|5
+--:|:--|:--|:--|:--
+Not knowledgeable at all||||Very knowledgeable
+
+##
+
+**Ease**
+
+> How easy it is for you to talk about your research with these groups
+
+1|2|3|4|5
+--:|:--|:--|:--|:--
+Very difficult||||Very easy
+
+##
+
+1|2|3|4|5
+--:|:--|:--|:--|:--
+Not "favourable"||||"Favourable"
+
+## Groups
+
+**Colleagues** &middot; Other scientists &middot; Press officers<br />
+Teachers &middot; University students &middot; **School students**<br />
+General journalists &middot; **Science journalists** &middot; Other media<br /> Politicians &middot; Industry &middot; **Non-specialist public**
 
 ## Colleagues
 
@@ -422,3 +552,49 @@ Colleagues &rarr; Students &rarr; SciJournos &rarr; NSP
 61</title></rect><text style="font-size: 11px; font-family: Arial,Helvetica; pointer-events: none;" text-anchor="start" dy=".35em" y="35.10230179028133" x="11">5</text></g></g></g></svg>
 
 </section>
+
+---
+
+<section><h1>Conclusions</h1>
+
+## Outreach activities
+
+- Most respondents to survey have participated in outreach in the past
+    - F/M ratio ~same
+- Most said they will participate in the coming 12 months
+
+## Attitudes to specific groups
+
+- Colleagues &mdash; most important, most knowledgeable, easiest to communicate with
+- Science journalists, school students, non-specialist public on par for importance and for ease of communication
+- Science journalists more knowledgeable than students and public
+
+</section>
+
+---
+
+<section><h1>Acknowledgements</h1>
+
+##
+
+Emma Weitkamp, Clare Wilkinson, Erik Stengler, Christine Sutton, for supervising my research
+
+Achille Petrilli, CMS Head of Communications, for supporting my research
+
+Special thanks to Richard Smith-Unna (t: [\@blahah404](https://twitter.com/blahah404)) for help with R code!
+
+##
+
+[R](https://www.r-project.org/) + [RStudio](https://www.rstudio.com/)
+
+[reveal.js](http://lab.hakim.se/reveal-js/)
+
+[plotly](https://plot.ly/)
+
+[RAW](http://raw.densitydesign.org/)
+
+[Git](https://git-scm.com/) + [GitHub](https://github.com/)
+
+</section>
+
+# Thank you
