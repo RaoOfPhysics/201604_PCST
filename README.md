@@ -1,5 +1,7 @@
 # Attitudes towards outreach in particle physics
 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.50791.svg)](http://dx.doi.org/10.5281/zenodo.50791)
+
 Presentation prepared for [my talk at PCST 2016](http://pcst.co/conferences/session/2016-04-26/292), showing early results from my PhD research. The presentation itself can be found at https://via.hypothes.is/https://raoofphysics.github.io/201604_PCST
 
 The slides should also be available on a mobile browser, although Firefox isn't loading the interactive plots for some reason. Against my better judgement, I recommend you use Chrome on Android to view the content.
@@ -39,4 +41,4 @@ I would like to thank my supervisors for guiding me on this project:
 - Dr. Erik Stengler (UWE)
 - Dr. Christine Sutton (CERN)
 
-I would also like to thank Richard Smith-Unna ([@blahah404](https://github.com/blahah404)) for his invaluable help with R.
+I would also like to thank Richard Smith-Unna ([@blahah](https://github.com/blahah)) for his invaluable help with R.
