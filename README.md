@@ -1,6 +1,7 @@
 # Attitudes towards outreach in particle physics
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.50791.svg)](http://dx.doi.org/10.5281/zenodo.50791)
+[![Achintya's PhD repos](https://img.shields.io/badge/collection-Achintya's%20PhD%20repos-yellowgreen.svg)](https://github.com/RaoOfPhysics/phd)
 
 Presentation prepared for [my talk at PCST 2016](http://pcst.co/conferences/session/2016-04-26/292), showing early results from my PhD research. The presentation itself can be found at https://via.hypothes.is/https://raoofphysics.github.io/201604_PCST
 
